@@ -1,12 +1,21 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
+import os
+
+# Read the version from version.py without importing the package
+version_file = os.path.join(os.path.dirname(__file__), 'src', 'enzywizard_flexibility', 'version.py')
+with open(version_file) as f:
+    exec(f.read())  # defines __version__
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 setup(
     name="enzywizard-flexibility",
-    version="1.0.1",                     # Using the release version
+    version=__version__,                    # Using the release version
     author="bioinfbrad",
     description="A command-line tool for estimating protein flexibility from a cleaned protein structure",
-    long_description=open("README.md").read(),
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/bioinfbrad/enzywizard-flexibility",
     package_dir={"": "src"},             # The package is under the src/ directory
@@ -28,4 +37,12 @@ setup(
     },
     include_package_data=True,
     license="MIT",
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3.10",
+        "Topic :: Scientific/Engineering :: Bio-Informatics",
+        "Topic :: Scientific/Engineering :: Chemistry",
+    ],
 )
