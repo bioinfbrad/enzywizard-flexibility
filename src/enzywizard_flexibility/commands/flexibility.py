@@ -1,5 +1,6 @@
 from __future__ import annotations
 from argparse import Namespace,ArgumentParser
+import sys
 from ..services.flexibility_service import run_flexibility_service
 
 
@@ -13,6 +14,7 @@ def add_flexibility_parser(parser: ArgumentParser) -> None:
     parser.set_defaults(func=run_flexibility)
 
 def run_flexibility(args: Namespace) -> None:
-    run_flexibility_service(input_path=args.input_path,output_dir=args.output_dir,cutoff=args.cutoff,n_modes=args.n_modes,method=args.method)
-
+    success = run_flexibility_service(input_path=args.input_path,output_dir=args.output_dir,cutoff=args.cutoff,n_modes=args.n_modes,method=args.method)
+    if not success:
+        sys.exit(1)
 
