@@ -24,7 +24,7 @@ setup(
     install_requires=[
         "biopython>=1.86",
         "prody>=2.6.1",
-        "numpy>=1.23.5",
+        "numpy>=1.23.5,<2",
         "scipy>=1.15.2",
         "requests>=2.33.1",
         "packaging",
